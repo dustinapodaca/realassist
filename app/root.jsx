@@ -7,15 +7,15 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import CSS from "./css/app.css";
+import stylesheet from "~/tailwind.css";
 
-export function links() {
-  return [{ rel: "stylesheet", href: CSS }];
-}
+export const links = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
 
 export const meta = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Real Assist Mockup",
   viewport: "width=device-width,initial-scale=1",
 });
 
