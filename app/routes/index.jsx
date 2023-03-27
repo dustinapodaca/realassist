@@ -109,8 +109,8 @@ export default function Index() {
         </div>
         {/* TOP NAV ABOVE*/}
         <Carousel />
-        <div className="w-full flex flex-row justify-between mt-6">
-          <div className="w-60 h-96 bg-white rounded-lg">
+        <div className="w-full flex flex-row justify-between mt-6 ml-2">
+          <div className="w-96 h-96 bg-white rounded-lg">
             <p>TEMPLATE FOR SALE DETAIL AREA</p>
           </div>
           <div className="w-full mx-6">
@@ -121,7 +121,7 @@ export default function Index() {
               <p>TEMPLATE MINI TOPNAV CENTER AREA</p>
             </div>
           </div>
-          <div className="w-60 h-64 bg-white rounded-lg">
+          <div className="w-96 h-64 bg-white rounded-lg">
             <p>TEMPLATE SHORTCUTS AREA</p>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function Index() {
       </div>
       <div className="drawer-side h-5/6">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-white text-base-content">
+        <ul className="menu p-4 w-72 bg-white text-base-content">
           {/* <!-- Sidebar content here --> */}
           <div>
             <img
