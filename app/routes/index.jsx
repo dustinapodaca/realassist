@@ -1,12 +1,22 @@
 import Carousel from "../components/carousel";
 
-//SVG NAV imports
+//SVG TOPNAV imports
 import notification from "../assets/img/notification.svg";
 import search from "../assets/img/search-normal.svg";
 import settings from "../assets/img/setting-2.svg";
 import logout from "../assets/img/logout.svg";
 import tempAvatar from "../assets/img/tempavatar.png";
 
+//SVG SIDENAV imports
+import dashboard from "../assets/img/sidenav/speedometer.svg";
+import searchProperty from "../assets/img/sidenav/search-status.svg";
+import calendar from "../assets/img/sidenav/calendar.svg";
+import clients from "../assets/img/sidenav/profile-2user.svg";
+import mls from "../assets/img/sidenav/shopping-cart.svg";
+import invite from "../assets/img/sidenav/user-circle-add.svg";
+import help from "../assets/img/sidenav/message-question.svg";
+
+import logo from "../assets/img/sidenav/cornerlogo.svg";
 
 export default function Index() {
   return (
@@ -14,8 +24,8 @@ export default function Index() {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col justify-between pl-6">
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-          <div className="navbar bg-base-100 mt-10 flex flex-row justify-between w-full">
-            <div>
+          <div className="navbar bg-base-100 mt-4 flex flex-row justify-between w-full">
+            <div className="w-8 h-8">
               <label
                 htmlFor="my-drawer-2"
                 className="btn btn-square btn-error drawer-button"
@@ -36,7 +46,7 @@ export default function Index() {
                   <polyline points="15 6 9 12 15 18" />
                 </svg>
               </label>
-              <a className="btn btn-ghost normal-case text-2xl tracking-tight">
+              <a className="btn btn-ghost normal-case text-lg tracking-tight">
                 2218 Thornridge Cir.. E5579076
               </a>
             </div>
@@ -47,28 +57,28 @@ export default function Index() {
                     <img
                       src={notification}
                       alt="notification"
-                      className="w-6 h-6"
+                      className="w-5 h-5"
                     />
-                    <span className="badge badge-xs badge-primary indicator-item"></span>
+                    <span className="badge badge-xs badge-primary indicator-item mt-1 mr-1"></span>
                   </div>
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img src={search} alt="search" className="w-6 h-6" />
+                  <img src={search} alt="search" className="w-5 h-5" />
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img src={settings} alt="settings" className="w-6 h-6" />
+                  <img src={settings} alt="settings" className="w-5 h-5" />
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img src={logout} alt="logout" className="w-6 h-6" />
+                  <img src={logout} alt="logout" className="w-5 h-5" />
                 </button>
                 <li tabIndex={0}>
                   <a>
                     <div className="avatar">
-                      <div className="w-14 rounded-full">
+                      <div className="w-12 rounded-full">
                         <img src={tempAvatar} />
                       </div>
                     </div>
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-start text-sm">
                       <span>Berkay Erdinc</span>
                       <span className="text-base-200 mt-1">
                         hi@berkayerdinc.com
@@ -108,37 +118,79 @@ export default function Index() {
           Open drawer
         </label> */}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side h-5/6">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-white text-base-content">
           {/* <!-- Sidebar content here --> */}
+          <div>
+            <img
+              src={logo}
+              alt="cornerLogo"
+              className="w-10 h-10 mb-8 mt-6 ml-1"
+            />
+          </div>
           <li>
-            <a>Dashboard</a>
+            <button className="btn btn-square btn-primary w-full h-14 text-white mb-6">
+              Create New Tour <span className="ml-1">+</span>
+            </button>
           </li>
-          <li>
-            <a>Search Property</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img src={dashboard} alt="dashboard" className="w-6 h-6" />
+              Dashboard
+            </span>
           </li>
-          <li>
-            <a>Calendar</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img
+                src={searchProperty}
+                alt="searchProperty"
+                className="w-6 h-6"
+              />
+              Search Property
+            </span>
           </li>
-          <li>
-            <a>My Clients</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img src={calendar} alt="calendar" className="w-6 h-6" />
+              Calendar
+            </span>
           </li>
-          <li>
-            <a>MLS Lists</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img src={clients} alt="clients" className="w-6 h-6" />
+              My Clients
+            </span>
           </li>
-          <li>
-            <a>Notifications</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img src={mls} alt="mlslists" className="w-6 h-6" />
+              MLS Lists
+            </span>
           </li>
-          <li>
-            <a>Invite & Earn</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img
+                src={notification}
+                alt="notification-sidenav"
+                className="w-6 h-6"
+              />
+              Notifications
+            </span>
           </li>
-          <span>
-            <p>
-              Need Help?
-            </p>
-            <li>
-              <a>Help Desk</a>
+          <li className="py-1">
+            <span className="text-sm">
+              <img src={invite} alt="inviteandearn" className="w-6 h-6" />
+              Invite & Earn
+            </span>
+          </li>
+          <span className="text-sm bottom-4 absolute">
+            <p className="ml-4">Need Help?</p>
+            <li className="py-1">
+              <span className="text-sm">
+                <img src={help} alt="helpdesk" className="w-6 h-6" />
+                Help Desk
+              </span>
             </li>
           </span>
         </ul>
