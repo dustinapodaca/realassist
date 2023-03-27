@@ -1,3 +1,5 @@
+'use strict';
+
 //COMPONENT imports
 import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";

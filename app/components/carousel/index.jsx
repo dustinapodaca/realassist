@@ -1,4 +1,6 @@
-//temp seed data
+'use strict';
+
+import React, { useState } from "react";
 
 import houseimg1 from '../../assets/img/houseimg1.jpg';
 import houseimg2 from '../../assets/img/houseimg2.jpg';
@@ -7,8 +9,7 @@ import houseimg4 from '../../assets/img/houseimg4.jpg';
 import houseimg5 from '../../assets/img/houseimg5.jpg';
 import houseimg6 from '../../assets/img/houseimg6.jpg';
 
-import React, { useState } from "react";
-
+//temp seed img data
 const images = [
   { id: 1, src: houseimg1 },
   { id: 2, src: houseimg2 },
