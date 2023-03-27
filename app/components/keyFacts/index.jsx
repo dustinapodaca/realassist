@@ -13,30 +13,30 @@ export default function KeyFacts() {
   };
 
   return (
-    <div 
-      className="bg-white rounded-lg"
+    <div
+      className="rounded-lg pb-12"
       // style={{ height: "40rem" }}
     >
       <div className="tabs w-full">
         <span
-          className={`tab tab-bordered ${
-            activeTab === 0 ? "tab-active" : ""
+          className={`tab tab-bordered font-medium ${
+            activeTab === 0 ? "tab-active text-neutral" : ""
           } w-1/3 h-16 ease-in-out duration-300 transition-all text-lg`}
           onClick={() => handleClick(0)}
         >
           Key Facts
         </span>
         <span
-          className={`tab tab-bordered ${
-            activeTab === 1 ? "tab-active" : ""
+          className={`tab tab-bordered font-medium ${
+            activeTab === 1 ? "tab-active text-neutral" : ""
           } w-1/3 h-16 ease-in-out duration-300 transition-all text-lg`}
           onClick={() => handleClick(1)}
         >
           Details
         </span>
         <span
-          className={`tab tab-bordered ${
-            activeTab === 2 ? "tab-active" : ""
+          className={`tab tab-bordered font-medium ${
+            activeTab === 2 ? "tab-active text-neutral" : ""
           } w-1/3 h-16 ease-in-out duration-300 transition-all text-lg`}
           onClick={() => handleClick(2)}
         >

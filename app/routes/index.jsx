@@ -32,7 +32,7 @@ export default function Index() {
     <>
       <div className="drawer drawer-mobile bg-base-300">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content pl-6 mr-6 z-20 mb-12">
+        <div className="drawer-content pl-6 mr-6 z-20">
           <div
             style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}
           >
