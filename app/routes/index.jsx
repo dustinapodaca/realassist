@@ -53,25 +53,13 @@ export default function Index() {
                   </div>
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img
-                    src={search}
-                    alt="search"
-                    className="w-6 h-6"
-                  />
+                  <img src={search} alt="search" className="w-6 h-6" />
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img
-                    src={settings}
-                    alt="settings"
-                    className="w-6 h-6"
-                  />
+                  <img src={settings} alt="settings" className="w-6 h-6" />
                 </button>
                 <button className="btn btn-ghost btn-circle mt-4">
-                  <img
-                    src={logout}
-                    alt="logout"
-                    className="w-6 h-6"
-                  />
+                  <img src={logout} alt="logout" className="w-6 h-6" />
                 </button>
                 <li tabIndex={0}>
                   <a>
@@ -125,11 +113,34 @@ export default function Index() {
         <ul className="menu p-4 w-80 bg-white text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <a>Sidebar Item 1</a>
+            <a>Dashboard</a>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <a>Search Property</a>
           </li>
+          <li>
+            <a>Calendar</a>
+          </li>
+          <li>
+            <a>My Clients</a>
+          </li>
+          <li>
+            <a>MLS Lists</a>
+          </li>
+          <li>
+            <a>Notifications</a>
+          </li>
+          <li>
+            <a>Invite & Earn</a>
+          </li>
+          <span>
+            <p>
+              Need Help?
+            </p>
+            <li>
+              <a>Help Desk</a>
+            </li>
+          </span>
         </ul>
       </div>
     </div>
