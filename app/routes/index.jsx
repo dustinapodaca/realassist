@@ -1,4 +1,6 @@
+//COMPONENT imports
 import Carousel from "../components/carousel";
+import PropertyDetails from "../components/propertyDetails";
 
 //SVG TOPNAV imports
 import notification from "../assets/img/notification.svg";
@@ -115,7 +117,7 @@ export default function Index() {
           </div>
           <div className="w-full mx-6">
             <div className="bg-white rounded-lg mb-6 h-20">
-              <p>TEMPLATE PROPERTY DETAILS AREA</p>
+              <PropertyDetails />
             </div>
             <div className="h-96 bg-white rounded-lg">
               <p>TEMPLATE MINI TOPNAV CENTER AREA</p>
