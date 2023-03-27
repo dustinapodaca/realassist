@@ -1,6 +1,7 @@
 //COMPONENT imports
 import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";
+import KeyFacts from "../components/keyFacts";
 
 //SVG TOPNAV imports
 import notification from "../assets/img/notification.svg";
@@ -120,7 +121,8 @@ export default function Index() {
               <PropertyDetails />
             </div>
             <div className="h-96 bg-white rounded-lg">
-              <p>TEMPLATE MINI TOPNAV CENTER AREA</p>
+              {/* <p>TEMPLATE MINI TOPNAV CENTER AREA</p> */}
+              <KeyFacts />
             </div>
           </div>
           <div className="w-96 h-64 bg-white rounded-lg">
