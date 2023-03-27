@@ -22,9 +22,9 @@ export default function Index() {
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col justify-between pl-6">
+      <div className="drawer-content pl-6 mr-6 z-20">
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-          <div className="navbar bg-base-100 mt-4 flex flex-row justify-between w-full">
+          <div className="navbar bg-base-100 mt-4 -mb-1 flex flex-row justify-between w-full z-50">
             <div className="w-8 h-8">
               <label
                 htmlFor="my-drawer-2"
@@ -109,7 +109,22 @@ export default function Index() {
         </div>
         {/* TOP NAV ABOVE*/}
         <Carousel />
-
+        <div className="w-full flex flex-row justify-between mt-6">
+          <div className="w-60 h-96 bg-white rounded-lg">
+            <p>TEMPLATE FOR SALE DETAIL AREA</p>
+          </div>
+          <div className="w-full mx-6">
+            <div className="bg-white rounded-lg mb-6 h-20">
+              <p>TEMPLATE PROPERTY DETAILS AREA</p>
+            </div>
+            <div className="h-96 bg-white rounded-lg">
+              <p>TEMPLATE MINI TOPNAV CENTER AREA</p>
+            </div>
+          </div>
+          <div className="w-60 h-64 bg-white rounded-lg">
+            <p>TEMPLATE SHORTCUTS AREA</p>
+          </div>
+        </div>
         {/* SIDENAV NAV BELOW*/}
         {/* <label
           htmlFor="my-drawer-2"
@@ -126,11 +141,11 @@ export default function Index() {
             <img
               src={logo}
               alt="cornerLogo"
-              className="w-10 h-10 mb-8 mt-6 ml-1"
+              className="w-10 h-10 mb-7 mt-6 ml-1"
             />
           </div>
           <li>
-            <button className="btn btn-square btn-primary w-full h-14 text-white mb-6">
+            <button className="btn btn-square btn-primary w-full h-14 text-white mb-5">
               Create New Tour <span className="ml-1">+</span>
             </button>
           </li>

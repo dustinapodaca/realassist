@@ -34,8 +34,8 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="absolute top-1/2 -mt-3 z-10">
+    <div className="relative -mr-2 top-0 -z-10">
+      <div className="absolute top-1/2 -mt-6 z-10">
         <button
           onClick={handleClickLeft}
           className="btn btn-square btn-error ml-8 text-gray-500 hover:text-gray-700 focus:outline-none"
@@ -59,7 +59,7 @@ const Carousel = () => {
       </div>
       <div className="overflow-hidden relative">
         <div
-          className="flex transition-all duration-500 ease-in-out"
+          className="flex transition-all duration-500 ease-in-out h-72"
           style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
         >
           {images.map((image) => (
@@ -67,12 +67,12 @@ const Carousel = () => {
               key={image.id}
               src={image.src}
               alt={image.id}
-              className="w-1/3 object-cover flex-none p-2 rounded-3xl"
+              className="w-1/3 object-cover flex-none p-2 rounded-2xl"
             />
           ))}
         </div>
       </div>
-      <div className="absolute top-1/2 -mt-3 right-0 z-10">
+      <div className="absolute top-1/2 -mt-6 right-0 z-10">
         <button
           onClick={handleClickRight}
           className="btn btn-square btn-error mr-8 text-base-200 hover:text-gray-700 focus:outline-none"
