@@ -15,7 +15,7 @@ export default function KeyFacts() {
   return (
     <div 
       className="bg-white rounded-lg"
-      style={{ height: "28rem" }}
+      // style={{ height: "40rem" }}
     >
       <div className="tabs w-full">
         <span

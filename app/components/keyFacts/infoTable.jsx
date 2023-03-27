@@ -5,8 +5,8 @@ import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
   return (
-    <div className="overflow-x-auto p-4">
-      <p className="text-md text-base-200 leading-8 mb-4">
+    <div className="overflow-x-auto p-4 bg-white rounded-xl" style={{height: "42rem"}}>
+      <p className="text-md text-base-200 leading-8 mb-1 px-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo
         risus a mattis semper. Integer placerat volutpat odio, at pulvinar
         tortor laoreet mattis. Proin aliquet semper tempus.
@@ -15,49 +15,57 @@ export default function InfoTable() {
         <tbody className="w-full">
           {/* row 1 */}
           <tr className="w-full">
-            <th>Tax</th>
-            <td>{data.tax} / {data.year}</td>
+            <td className="text-base-200 font-medium -pl-4">Tax</td>
+            <td className="text-neutral text-right font-medium">
+              ${data.tax} / {data.year}
+            </td>
           </tr>
           {/* row 2 */}
           <tr>
-            <th>Type</th>
-            <td>{data.type}</td>
+            <td className="text-base-200 font-medium">Type</td>
+            <td className="text-neutral text-right font-medium">{data.type}</td>
           </tr>
           {/* row 3 */}
           <tr>
-            <th>Building Age</th>
-            <td>{data.buildingAge}</td>
+            <td className="text-base-200 font-medium">Building Age</td>
+            <td className="text-neutral text-right font-medium">{data.buildingAge}</td>
           </tr>
           {/* row 4 */}
           <tr>
-            <th>Size</th>
-            <td>{data.size}</td>
+            <td className="text-base-200 font-medium">Size</td>
+            <td className="text-neutral text-right font-medium">{data.size} sq.ft.</td>
           </tr>
           {/* row 5 */}
           <tr>
-            <th>Parking</th>
-            <td>{data.parking}</td>
+            <td className="text-base-200 font-medium">Parking</td>
+            <td className="text-neutral text-right font-medium">{data.parking}</td>
           </tr>
           {/* row 6 */}
           <tr>
-            <th>Basement</th>
-            <td>{data.basement}</td>
+            <td className="text-base-200 font-medium">Basement</td>
+            <td className="text-neutral text-right font-medium">{data.basement}</td>
           </tr>
           {/* row 7 */}
           <tr>
-            <th>MLS#</th>
-            <td>{data.mls}</td>
+            <td className="text-base-200 font-medium">MLS#</td>
+            <td className="text-neutral text-right font-medium">{data.mls}</td>
           </tr>
           {/* row 8 */}
           <tr>
-            <th>Possession</th>
-            <td>{data.possession}</td>
+            <td className="text-base-200 font-medium">Possession</td>
+            <td className="text-neutral text-right font-medium">{data.possession}</td>
           </tr>
           {/* row 9 */}
-          {/* <tr>
-            <th>Description</th>
-            <td className="break-normal w-min">{data.description}</td>
-          </tr> */}
+          <tr className="w-full absolute">
+            <td className="text-neutral text-lg font-medium block w-full">
+              Description
+            </td>
+            <span className="relative">
+              <p className="w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
+                {data.description}
+              </p>
+            </span>
+          </tr>
         </tbody>
       </table>
     </div>
