@@ -5,7 +5,10 @@ import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
   return (
-    <div className="overflow-x-auto p-4 bg-white rounded-xl" style={{height: "42rem"}}>
+    <div
+      className="overflow-x-auto p-4 bg-white rounded-xl"
+      style={{ height: "42rem" }}
+    >
       <p className="text-md text-base-200 leading-8 mb-1 px-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo
         risus a mattis semper. Integer placerat volutpat odio, at pulvinar
@@ -17,7 +20,7 @@ export default function InfoTable() {
           <tr className="w-full">
             <td className="text-base-200 font-medium -pl-4">Tax</td>
             <td className="text-neutral text-right font-medium">
-              ${data.tax} / {data.year}
+              ${data.tax.toLocaleString("en-US")} / {data.year}
             </td>
           </tr>
           {/* row 2 */}
@@ -28,22 +31,30 @@ export default function InfoTable() {
           {/* row 3 */}
           <tr>
             <td className="text-base-200 font-medium">Building Age</td>
-            <td className="text-neutral text-right font-medium">{data.buildingAge}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.buildingAge}
+            </td>
           </tr>
           {/* row 4 */}
           <tr>
             <td className="text-base-200 font-medium">Size</td>
-            <td className="text-neutral text-right font-medium">{data.size} sq.ft.</td>
+            <td className="text-neutral text-right font-medium">
+              {data.size} sq.ft.
+            </td>
           </tr>
           {/* row 5 */}
           <tr>
             <td className="text-base-200 font-medium">Parking</td>
-            <td className="text-neutral text-right font-medium">{data.parking}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.parking}
+            </td>
           </tr>
           {/* row 6 */}
           <tr>
             <td className="text-base-200 font-medium">Basement</td>
-            <td className="text-neutral text-right font-medium">{data.basement}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.basement}
+            </td>
           </tr>
           {/* row 7 */}
           <tr>
@@ -53,7 +64,9 @@ export default function InfoTable() {
           {/* row 8 */}
           <tr>
             <td className="text-base-200 font-medium">Possession</td>
-            <td className="text-neutral text-right font-medium">{data.possession}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.possession}
+            </td>
           </tr>
           {/* row 9 */}
           <tr className="w-full absolute">

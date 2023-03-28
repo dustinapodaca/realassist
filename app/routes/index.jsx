@@ -4,6 +4,7 @@
 import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";
 import KeyFacts from "../components/keyFacts";
+import SaleInfo from "../components/saleInfo";
 // import Footer from "../components/footer";
 
 //SVG TOPNAV imports
@@ -58,8 +59,8 @@ export default function Index() {
                     <polyline points="15 6 9 12 15 18" />
                   </svg>
                 </label>
-                <a className="btn btn-ghost normal-case text-lg tracking-tight text-neutral">
-                  <span className="mr-1 text-base-200">{data.address}.</span> {data.mls}
+                <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
+                  <span className="mr-2 text-base-200">{data.address}.</span> {data.mls}
                 </a>
               </div>
               <div>
@@ -122,8 +123,9 @@ export default function Index() {
           {/* TOP NAV ABOVE*/}
           <Carousel />
           <div className="w-full flex flex-row justify-between mt-6 ml-2">
-            <div className="w-96 h-96 bg-white rounded-lg">
-              <p>TEMPLATE FOR SALE DETAIL AREA</p>
+            <div className="bg-white rounded-lg" style={{width: "26rem", height: "30rem"}}>
+              {/* <p>TEMPLATE FOR SALE DETAIL AREA</p> */}
+              <SaleInfo />
             </div>
             <div className="w-full mx-6">
               <div className="bg-white rounded-lg mb-4 h-20">
@@ -145,7 +147,7 @@ export default function Index() {
             Open drawer
           </label> */}
         </div>
-        <div className="drawer-side" style={{ height: "54rem" }}>
+        <div className="drawer-side" style={{ height: "58rem" }}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-72 bg-white text-base-content">
             {/* <!-- Sidebar content here --> */}
