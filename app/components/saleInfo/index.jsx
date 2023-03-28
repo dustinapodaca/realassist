@@ -1,4 +1,9 @@
-import data from "../../assets/data/data.json";
+'use strict';
+
+import { useState, useEffect } from "react";
+
+//MOCK JSON import
+// import data from "../../assets/data/data.json";
 
 //SVG IMPORTS
 import map from "../../assets/img/saleComponent/map.svg";
@@ -8,6 +13,30 @@ import notes from "../../assets/img/saleComponent/note-favorite.svg";
 import phoneLogo from "../../assets/img/saleComponent/phoneLogo.svg";
 
 export default function SaleInfo () {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(`/api/property/${propertyId}`);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+  
   return (
     <>
       <div className="flex flex-row">

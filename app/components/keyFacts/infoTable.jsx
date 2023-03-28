@@ -1,12 +1,35 @@
 'use strict';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //MOCK DATA import
-import data from "../../assets/data/data.json";
+// import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(`/api/property/${propertyId}`);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
   
   let description = data.listingDetails.description;
   let maxWords = 25;
