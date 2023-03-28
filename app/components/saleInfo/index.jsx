@@ -19,7 +19,7 @@ export default function SaleInfo () {
         </button>
       </div>
       <div className="px-5 mt-3">
-        <p className="text-neutral font-medium mb-1">MLS#: {data.mls}</p>
+        <p className="text-neutral font-medium mb-1">MLS#: {data.homeDetails.mls}</p>
         <p className="mb-1 text-base-200">
           Listed for:{" "}
           <span className="text-primary font-medium">

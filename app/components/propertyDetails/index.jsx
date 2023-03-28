@@ -1,5 +1,9 @@
+'use strict';
+
+import { useState, useEffect } from "react";
+
 //MOCK JSON IMPORT
-import data from "../../assets/data/data.json";
+// import data from "../../assets/data/data.json";
 
 //SVG IMPORTS
 import houseType from "../../assets/img/propDetails/building-4.svg";
@@ -10,6 +14,32 @@ import sqft from "../../assets/img/propDetails/home-2.svg";
 import area from "../../assets/img/propDetails/format-square.svg";
 
 export default function PropertyDetails () {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(
+          `/api/property/${propertyId}`
+        );
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="bg-white rounded-lg mb-6 h-20 flex flex-row justify-between items-center">
       <div>
