@@ -32,7 +32,7 @@ export default function InfoTable() {
   }
   
   let description = data.listingDetails.description;
-  let maxWords = 25;
+  const maxWords = 25;
 
   const words = description.split(" ");
   const truncatedWords = words.slice(0, maxWords);
@@ -116,7 +116,7 @@ export default function InfoTable() {
             <td className="text-neutral text-lg font-medium block w-full">
               Description
             </td>
-            <p className="relative w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
+            <p className="relative w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6 pb-5">
               {isExpanded ? description : truncatedText}
               {words.length > maxWords && (
                 <button className="text-primary ml-2 font-medium" onClick={toggleExpansion}>

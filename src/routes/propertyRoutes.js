@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const Property = require('../models/propertySchema.js');
+// const Property = require('../models/propertySchema.js');
 
 const router = express.Router();
 
@@ -31,7 +31,7 @@ const mockPropertyData = [
     },
     "listingDetails": {
       "type": "Single-Family",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo risus a mattis semper. Integer placerat volutpat odio, at pulvinar tortor laoreet mattis. Proin aliquet semper tempus. Etiam auctor lacus leo , sit amet lacinia nisl tincidunt eget."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
   }
 ];

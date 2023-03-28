@@ -1,5 +1,7 @@
 'use strict';
 
+import { useState, useEffect } from "react";
+
 //COMPONENT imports
 import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";
@@ -27,11 +29,35 @@ import help from "../assets/img/sidenav/message-question.svg";
 import logo from "../assets/img/sidenav/cornerlogo.svg";
 
 //MOCK DATA import
-import data from "../assets/data/data.json";
+// import data from "../assets/data/data.json";
 
 import { motion } from "framer-motion";
 
 export default function Index() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(`/api/property/${propertyId}`);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <>
       <div className="drawer drawer-mobile bg-base-300">
