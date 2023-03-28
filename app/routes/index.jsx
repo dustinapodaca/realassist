@@ -28,10 +28,12 @@ import logo from "../assets/img/sidenav/cornerlogo.svg";
 //MOCK DATA import
 import data from "../assets/data/data.json";
 
+import { motion } from "framer-motion";
+
 export default function Index() {
   return (
     <>
-      <div className="drawer drawer-mobile bg-base-300">
+      <div className="drawer bg-base-300">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content pl-6 mr-6 z-20">
           <div
@@ -39,11 +41,11 @@ export default function Index() {
           >
             <div className="navbar bg-base-300 mt-4 -mb-1 flex flex-row justify-between w-full z-50">
               <div className="w-8 h-8">
-                <label
+                <motion.label
                   htmlFor="my-drawer-2"
                   className="btn btn-square btn-error drawer-button"
                 >
-                  <svg
+                  <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-chevron-left"
                     width="24"
@@ -54,13 +56,19 @@ export default function Index() {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: 180,
+                      transition: { type: "spring", stiffness: 500, damping: 30 },
+                    }}
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="15 6 9 12 15 18" />
-                  </svg>
-                </label>
+                  </motion.svg>
+                </motion.label>
                 <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
-                  <span className="mr-2 text-base-200">{data.address}.</span> {data.mls}
+                  <span className="mr-2 text-base-200">{data.address}.</span>{" "}
+                  {data.mls}
                 </a>
               </div>
               <div>
@@ -123,7 +131,10 @@ export default function Index() {
           {/* TOP NAV ABOVE*/}
           <Carousel />
           <div className="w-full flex flex-row justify-between mt-6 ml-2">
-            <div className="bg-white rounded-lg" style={{width: "26rem", height: "30rem"}}>
+            <div
+              className="bg-white rounded-lg"
+              style={{ width: "26rem", height: "33rem" }}
+            >
               {/* <p>TEMPLATE FOR SALE DETAIL AREA</p> */}
               <SaleInfo />
             </div>
@@ -147,7 +158,7 @@ export default function Index() {
             Open drawer
           </label> */}
         </div>
-        <div className="drawer-side" style={{ height: "58rem" }}>
+        <div className="drawer-side" style={{ height: "62rem" }}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-72 bg-white text-base-content">
             {/* <!-- Sidebar content here --> */}

@@ -5,6 +5,7 @@ import map from "../../assets/img/saleComponent/map.svg";
 import directions from "../../assets/img/saleComponent/direction-line.svg";
 import share from "../../assets/img/saleComponent/share-line.svg";
 import notes from "../../assets/img/saleComponent/note-favorite.svg";
+import phoneLogo from "../../assets/img/saleComponent/phoneLogo.svg";
 
 export default function SaleInfo () {
   return (
@@ -20,7 +21,10 @@ export default function SaleInfo () {
       <div className="px-5 mt-3">
         <p className="text-neutral font-medium mb-1">MLS#: {data.mls}</p>
         <p className="mb-1 text-base-200">
-          Listed for: <span className="text-primary font-medium">${data.price.toLocaleString("en-US")}</span>
+          Listed for:{" "}
+          <span className="text-primary font-medium">
+            ${data.price.toLocaleString("en-US")}
+          </span>
         </p>
         <p className="text-neutral">
           {data.address} {data.city},
@@ -31,10 +35,14 @@ export default function SaleInfo () {
       </div>
       <div className="flex flex-col px-4">
         <button className="btn btn-outline btn-square btn-accent w-full mb-2 flex flex-row items-left justify-start">
-          <img src={map} alt="map" className="w-6 h-6 ml-4 mr-2" />
-          <span className="text-base-200 normal-case text-right font-medium ">
+          <img
+            src={map}
+            alt="map"
+            className="w-6 h-6 ml-4 mr-2 hover:text-white hover:stroke-white hover:fill-white"
+          />
+          <p className="text-base-200 hover:text-white pr-28 py-4 normal-case text-right font-medium ">
             View on Map
-          </span>
+          </p>
         </button>
         <button className="btn btn-outline btn-square btn-accent w-full mb-2 flex flex-row items-left justify-start">
           <img
@@ -42,22 +50,34 @@ export default function SaleInfo () {
             alt="directions"
             className="w-6 h-6 ml-4 mr-2"
           />
-          <span className="text-base-200 normal-case text-right font-medium">
+          <span className="text-base-200 hover:text-white pr-24 py-4 normal-case text-right font-medium">
             Get Directions
           </span>
         </button>
         <button className="btn btn-outline btn-square btn-accent w-full mb-2 flex flex-row items-left justify-start">
           <img src={share} alt="share" className="w-6 h-6 ml-4 mr-2" />
-          <span className="text-base-200 normal-case text-right font-medium">
+          <span className="text-base-200 hover:text-white pr-40 py-4 normal-case text-right font-medium">
             Share
           </span>
         </button>
         <button className="btn btn-outline btn-square btn-accent w-full mb-2 flex flex-row items-left justify-start">
           <img src={notes} alt="notes" className="w-6 h-6 ml-4 mr-2" />
-          <span className="text-base-200 normal-case text-right font-medium">
+          <span className="text-base-200 hover:text-white pr-32 py-4 normal-case text-right font-medium">
             My Notes
           </span>
         </button>
+        <div className="w-full px-4 h-20 bg-base-300 rounded-lg mt-3">
+          <p className="text-base-200 font-normal text-xs mt-2">
+            Listing Agent
+          </p>
+          <p className="text-neutral font-normal text-sm mt-1">Courtney Henry</p>
+          <span className="flex flex-row mt-1">
+            <img src={phoneLogo} alt="phoneLogo" className="w-5 h-5 mr-2 rounded-full" />
+            <p className="text-base-200 normal-case text-sm text-right font-medium">
+              +90 552 489 8277
+            </p>
+          </span>
+        </div>
       </div>
     </>
   );
