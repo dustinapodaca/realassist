@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    fill: ['hover', 'focus'],
+  },
   daisyui: {
     themes: [
       {

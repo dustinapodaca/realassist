@@ -4,11 +4,22 @@ const compression = require("compression");
 const morgan = require("morgan");
 const { createRequestHandler } = require("@remix-run/express");
 
+//MongoDB
+// const mongoose = require("mongoose");
+// mongoose.connect(process.env.MONGODB_URI);
+
+//Routes
+const propertyRoutes = require("./src/routes/propertyRoutes.js");
+
 const BUILD_DIR = path.join(process.cwd(), "build");
 
 const app = express();
 
 app.use(compression());
+app.use(express.json());
+
+//USE ROUTES
+app.use('/api/property', propertyRoutes);
 
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
 app.disable("x-powered-by");

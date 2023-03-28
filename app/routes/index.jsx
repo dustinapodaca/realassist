@@ -1,10 +1,13 @@
 'use strict';
 
+import { useState, useEffect } from "react";
+
 //COMPONENT imports
 import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";
 import KeyFacts from "../components/keyFacts";
 import SaleInfo from "../components/saleInfo";
+import Shortcuts from "../components/shortcuts";
 // import Footer from "../components/footer";
 
 //SVG TOPNAV imports
@@ -26,24 +29,50 @@ import help from "../assets/img/sidenav/message-question.svg";
 import logo from "../assets/img/sidenav/cornerlogo.svg";
 
 //MOCK DATA import
-import data from "../assets/data/data.json";
+// import data from "../assets/data/data.json";
+
+import { motion } from "framer-motion";
 
 export default function Index() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(`/api/property/${propertyId}`);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <>
       <div className="drawer drawer-mobile bg-base-300">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content pl-6 mr-6 z-20">
+        <div className="drawer-content pl-6 pr-6 z-20">
           <div
             style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}
           >
             <div className="navbar bg-base-300 mt-4 -mb-1 flex flex-row justify-between w-full z-50">
               <div className="w-8 h-8">
-                <label
+                <motion.label
                   htmlFor="my-drawer-2"
                   className="btn btn-square btn-error drawer-button"
                 >
-                  <svg
+                  <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-chevron-left"
                     width="24"
@@ -54,13 +83,23 @@ export default function Index() {
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: 180,
+                      transition: {
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      },
+                    }}
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="15 6 9 12 15 18" />
-                  </svg>
-                </label>
+                  </motion.svg>
+                </motion.label>
                 <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
-                  <span className="mr-2 text-base-200">{data.address}.</span> {data.mls}
+                  <span className="mr-2 text-base-200">{data.address}.</span>{" "}
+                  {data.homeDetails.mls}
                 </a>
               </div>
               <div>
@@ -122,8 +161,11 @@ export default function Index() {
           </div>
           {/* TOP NAV ABOVE*/}
           <Carousel />
-          <div className="w-full flex flex-row justify-between mt-6 ml-2">
-            <div className="bg-white rounded-lg" style={{width: "26rem", height: "30rem"}}>
+          <div className="w-full flex flex-row justify-evenly mt-6 pl-2">
+            <div
+              className="bg-white rounded-lg"
+              style={{ width: "26rem", height: "33rem" }}
+            >
               {/* <p>TEMPLATE FOR SALE DETAIL AREA</p> */}
               <SaleInfo />
             </div>
@@ -135,19 +177,16 @@ export default function Index() {
                 <KeyFacts />
               </div>
             </div>
-            <div className="w-96 h-64 bg-white rounded-lg">
-              <p>TEMPLATE SHORTCUTS AREA</p>
+            <div
+              className="bg-white rounded-lg"
+              style={{ width: "30rem", height: "23rem" }}
+            >
+              <Shortcuts />
             </div>
           </div>
           {/* SIDENAV NAV BELOW*/}
-          {/* <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label> */}
         </div>
-        <div className="drawer-side" style={{ height: "58rem" }}>
+        <div className="drawer-side" style={{ height: "62rem" }}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-72 bg-white text-base-content">
             {/* <!-- Sidebar content here --> */}

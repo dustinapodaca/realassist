@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 import houseimg1 from '../../assets/img/houseimg1.jpg';
 import houseimg2 from '../../assets/img/houseimg2.jpg';
@@ -41,7 +42,7 @@ const Carousel = () => {
           onClick={handleClickLeft}
           className="btn btn-square btn-error ml-8 text-gray-500 hover:text-gray-700 focus:outline-none"
         >
-          <svg
+          <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-chevron-left"
             width="24"
@@ -52,10 +53,14 @@ const Carousel = () => {
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
+            whileHover={{
+              scale: 1.3,
+              transition: { type: "spring", stiffness: 600, damping: 25 },
+            }}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <polyline points="15 6 9 12 15 18" />
-          </svg>
+          </motion.svg>
         </button>
       </div>
       <div className="overflow-hidden relative">
@@ -78,7 +83,7 @@ const Carousel = () => {
           onClick={handleClickRight}
           className="btn btn-square btn-error mr-8 text-base-200 hover:text-gray-700 focus:outline-none"
         >
-          <svg
+          <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-chevron-right"
             width="24"
@@ -89,10 +94,14 @@ const Carousel = () => {
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
+            whileHover={{
+              scale: 1.3,
+              transition: { type: "spring", stiffness: 600, damping: 25 },
+            }}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <polyline points="9 6 15 12 9 18" />
-          </svg>
+          </motion.svg>
         </button>
       </div>
     </div>

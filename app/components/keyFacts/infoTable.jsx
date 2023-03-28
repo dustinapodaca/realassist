@@ -1,9 +1,47 @@
 'use strict';
 
+import { useState, useEffect } from "react";
+
 //MOCK DATA import
-import data from "../../assets/data/data.json";
+// import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        //hardcoded propertyId for now
+        const propertyId = 1;
+        const response = await fetch(`/api/property/${propertyId}`);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+  
+  let description = data.listingDetails.description;
+  const maxWords = 25;
+
+  const words = description.split(" ");
+  const truncatedWords = words.slice(0, maxWords);
+  const truncatedText = truncatedWords.join(" ");
+
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div
       className="overflow-x-auto p-4 bg-white rounded-xl"
@@ -20,52 +58,57 @@ export default function InfoTable() {
           <tr className="w-full">
             <td className="text-base-200 font-medium -pl-4">Tax</td>
             <td className="text-neutral text-right font-medium">
-              ${data.tax.toLocaleString("en-US")} / {data.year}
+              ${data.homeDetails.tax.toLocaleString("en-US")} /{" "}
+              {data.homeDetails.year}
             </td>
           </tr>
           {/* row 2 */}
           <tr>
             <td className="text-base-200 font-medium">Type</td>
-            <td className="text-neutral text-right font-medium">{data.type}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.listingDetails.type}
+            </td>
           </tr>
           {/* row 3 */}
           <tr>
             <td className="text-base-200 font-medium">Building Age</td>
             <td className="text-neutral text-right font-medium">
-              {data.buildingAge}
+              {data.homeDetails.buildingAge}
             </td>
           </tr>
           {/* row 4 */}
           <tr>
             <td className="text-base-200 font-medium">Size</td>
             <td className="text-neutral text-right font-medium">
-              {data.size} sq.ft.
+              {data.homeDetails.size} sq.ft.
             </td>
           </tr>
           {/* row 5 */}
           <tr>
             <td className="text-base-200 font-medium">Parking</td>
             <td className="text-neutral text-right font-medium">
-              {data.parking}
+              {data.homeDetails.parking}
             </td>
           </tr>
           {/* row 6 */}
           <tr>
             <td className="text-base-200 font-medium">Basement</td>
             <td className="text-neutral text-right font-medium">
-              {data.basement}
+              {data.homeDetails.basement}
             </td>
           </tr>
           {/* row 7 */}
           <tr>
             <td className="text-base-200 font-medium">MLS#</td>
-            <td className="text-neutral text-right font-medium">{data.mls}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.homeDetails.mls}
+            </td>
           </tr>
           {/* row 8 */}
           <tr>
             <td className="text-base-200 font-medium">Possession</td>
             <td className="text-neutral text-right font-medium">
-              {data.possession}
+              {data.homeDetails.possession}
             </td>
           </tr>
           {/* row 9 */}
@@ -73,11 +116,14 @@ export default function InfoTable() {
             <td className="text-neutral text-lg font-medium block w-full">
               Description
             </td>
-            <span className="relative">
-              <p className="w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
-                {data.description}
-              </p>
-            </span>
+            <p className="relative w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6 pb-5">
+              {isExpanded ? description : truncatedText}
+              {words.length > maxWords && (
+                <button className="text-primary ml-2 font-medium" onClick={toggleExpansion}>
+                  {isExpanded ? "..read less" : "read more.."}
+                </button>
+              )}
+            </p>
           </tr>
         </tbody>
       </table>
