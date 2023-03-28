@@ -1,9 +1,24 @@
 'use strict';
 
+import { useState } from "react";
+
 //MOCK DATA import
 import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  let description = data.listingDetails.description;
+  let maxWords = 25;
+
+  const words = description.split(" ");
+  const truncatedWords = words.slice(0, maxWords);
+  const truncatedText = truncatedWords.join(" ");
+
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div
       className="overflow-x-auto p-4 bg-white rounded-xl"
@@ -20,13 +35,16 @@ export default function InfoTable() {
           <tr className="w-full">
             <td className="text-base-200 font-medium -pl-4">Tax</td>
             <td className="text-neutral text-right font-medium">
-              ${data.homeDetails.tax.toLocaleString("en-US")} / {data.homeDetails.year}
+              ${data.homeDetails.tax.toLocaleString("en-US")} /{" "}
+              {data.homeDetails.year}
             </td>
           </tr>
           {/* row 2 */}
           <tr>
             <td className="text-base-200 font-medium">Type</td>
-            <td className="text-neutral text-right font-medium">{data.listingDetails.type}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.listingDetails.type}
+            </td>
           </tr>
           {/* row 3 */}
           <tr>
@@ -59,7 +77,9 @@ export default function InfoTable() {
           {/* row 7 */}
           <tr>
             <td className="text-base-200 font-medium">MLS#</td>
-            <td className="text-neutral text-right font-medium">{data.homeDetails.mls}</td>
+            <td className="text-neutral text-right font-medium">
+              {data.homeDetails.mls}
+            </td>
           </tr>
           {/* row 8 */}
           <tr>
@@ -73,11 +93,14 @@ export default function InfoTable() {
             <td className="text-neutral text-lg font-medium block w-full">
               Description
             </td>
-            <span className="relative">
-              <p className="w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
-                {data.listingDetails.description}
-              </p>
-            </span>
+            <p className="relative w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
+              {isExpanded ? description : truncatedText}
+              {words.length > maxWords && (
+                <button className="text-primary ml-2 font-medium" onClick={toggleExpansion}>
+                  {isExpanded ? "..read less" : "read more.."}
+                </button>
+              )}
+            </p>
           </tr>
         </tbody>
       </table>

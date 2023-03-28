@@ -73,7 +73,7 @@ export default function Index() {
                 </motion.label>
                 <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
                   <span className="mr-2 text-base-200">{data.address}.</span>{" "}
-                  {data.mls}
+                  {data.homeDetails.mls}
                 </a>
               </div>
               <div>
