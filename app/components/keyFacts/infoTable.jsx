@@ -20,52 +20,52 @@ export default function InfoTable() {
           <tr className="w-full">
             <td className="text-base-200 font-medium -pl-4">Tax</td>
             <td className="text-neutral text-right font-medium">
-              ${data.tax.toLocaleString("en-US")} / {data.year}
+              ${data.homeDetails.tax.toLocaleString("en-US")} / {data.homeDetails.year}
             </td>
           </tr>
           {/* row 2 */}
           <tr>
             <td className="text-base-200 font-medium">Type</td>
-            <td className="text-neutral text-right font-medium">{data.type}</td>
+            <td className="text-neutral text-right font-medium">{data.listingDetails.type}</td>
           </tr>
           {/* row 3 */}
           <tr>
             <td className="text-base-200 font-medium">Building Age</td>
             <td className="text-neutral text-right font-medium">
-              {data.buildingAge}
+              {data.homeDetails.buildingAge}
             </td>
           </tr>
           {/* row 4 */}
           <tr>
             <td className="text-base-200 font-medium">Size</td>
             <td className="text-neutral text-right font-medium">
-              {data.size} sq.ft.
+              {data.homeDetails.size} sq.ft.
             </td>
           </tr>
           {/* row 5 */}
           <tr>
             <td className="text-base-200 font-medium">Parking</td>
             <td className="text-neutral text-right font-medium">
-              {data.parking}
+              {data.homeDetails.parking}
             </td>
           </tr>
           {/* row 6 */}
           <tr>
             <td className="text-base-200 font-medium">Basement</td>
             <td className="text-neutral text-right font-medium">
-              {data.basement}
+              {data.homeDetails.basement}
             </td>
           </tr>
           {/* row 7 */}
           <tr>
             <td className="text-base-200 font-medium">MLS#</td>
-            <td className="text-neutral text-right font-medium">{data.mls}</td>
+            <td className="text-neutral text-right font-medium">{data.homeDetails.mls}</td>
           </tr>
           {/* row 8 */}
           <tr>
             <td className="text-base-200 font-medium">Possession</td>
             <td className="text-neutral text-right font-medium">
-              {data.possession}
+              {data.homeDetails.possession}
             </td>
           </tr>
           {/* row 9 */}
@@ -75,7 +75,7 @@ export default function InfoTable() {
             </td>
             <span className="relative">
               <p className="w-full break-normal text-base-200 text-sm -mt-2 px-4 leading-6">
-                {data.description}
+                {data.listingDetails.description}
               </p>
             </span>
           </tr>

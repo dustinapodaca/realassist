@@ -35,7 +35,7 @@ export default function Shortcuts () {
           />
         </label>
       </div>
-      <div className="flex flex-row items-center mx-4 h-12 bg-base-300 rounded-lg mt-3 mb-2">
+      <div className="flex flex-row items-center mx-4 h-14 bg-base-300 rounded-lg mt-3 mb-2">
         <p className="text-neutral text-sm font-medium ml-4 mr-3">
           Notify similar properties
         </p>

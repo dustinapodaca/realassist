@@ -22,11 +22,11 @@ export default function PropertyDetails () {
             alt="houseType"
             className="w-6 h-6 m-auto mb-1"
           />
-          <p className="text-base-200 text-sm">{data.homeType}</p>
+          <p className="text-base-200 text-sm">{data.homeDetails.homeType}</p>
         </span>
         <span className="mx-4">
           <img src={bedrooms} alt="bedrooms" className="w-6 h-6 m-auto mb-1" />
-          <p className="text-base-200 text-sm">{data.bedrooms} Bedrooms</p>
+          <p className="text-base-200 text-sm">{data.homeDetails.bedrooms} Bedrooms</p>
         </span>
         <span className="mx-4">
           <img
@@ -34,22 +34,22 @@ export default function PropertyDetails () {
             alt="bathrooms"
             className="w-6 h-6 m-auto mb-1"
           />
-          <p className="text-base-200 text-sm">{data.bathrooms} Bathrooms</p>
+          <p className="text-base-200 text-sm">{data.homeDetails.bathrooms} Bathrooms</p>
         </span>
         <span className="mx-4">
           <img src={garage} alt="garage" className="w-6 h-6 m-auto mb-1" />
-          <p className="text-base-200 text-sm">{data.garage} Garage</p>
+          <p className="text-base-200 text-sm">{data.homeDetails.garage} Garage</p>
         </span>
         <span className="mx-4">
           <img src={sqft} alt="sqft" className="w-6 h-6 m-auto mb-1" />
           <p className="text-base-200 text-sm">
-            {data.sqft.toLocaleString("en-US")} sq.ft.
+            {data.homeDetails.sqft.toLocaleString("en-US")} sq.ft.
           </p>
         </span>
         <span className="mx-4">
           <img src={area} alt="area" className="w-6 h-6 m-auto mb-1" />
           <p className="text-base-200 text-sm">
-            {data.area.toLocaleString("en-US")} sq.ft.
+            {data.homeDetails.area.toLocaleString("en-US")} sq.ft.
           </p>
         </span>
       </div>

@@ -55,7 +55,7 @@ const Carousel = () => {
             strokeLinejoin="round"
             whileHover={{
               scale: 1.3,
-              transition: { type: "spring", stiffness: 600 },
+              transition: { type: "spring", stiffness: 600, damping: 25 },
             }}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -96,7 +96,7 @@ const Carousel = () => {
             strokeLinejoin="round"
             whileHover={{
               scale: 1.3,
-              transition: { type: "spring", stiffness: 600 },
+              transition: { type: "spring", stiffness: 600, damping: 25 },
             }}
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
