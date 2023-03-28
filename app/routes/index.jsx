@@ -5,6 +5,7 @@ import Carousel from "../components/carousel";
 import PropertyDetails from "../components/propertyDetails";
 import KeyFacts from "../components/keyFacts";
 import SaleInfo from "../components/saleInfo";
+import Shortcuts from "../components/shortcuts";
 // import Footer from "../components/footer";
 
 //SVG TOPNAV imports
@@ -33,9 +34,9 @@ import { motion } from "framer-motion";
 export default function Index() {
   return (
     <>
-      <div className="drawer bg-base-300">
+      <div className="drawer drawer-mobile bg-base-300">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content pl-6 mr-6 z-20">
+        <div className="drawer-content pl-6 pr-6 z-20">
           <div
             style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}
           >
@@ -59,7 +60,11 @@ export default function Index() {
                     whileHover={{
                       scale: 1.2,
                       rotate: 180,
-                      transition: { type: "spring", stiffness: 500, damping: 30 },
+                      transition: {
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      },
                     }}
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -130,7 +135,7 @@ export default function Index() {
           </div>
           {/* TOP NAV ABOVE*/}
           <Carousel />
-          <div className="w-full flex flex-row justify-between mt-6 ml-2">
+          <div className="w-full flex flex-row justify-evenly mt-6 pl-2">
             <div
               className="bg-white rounded-lg"
               style={{ width: "26rem", height: "33rem" }}
@@ -146,17 +151,14 @@ export default function Index() {
                 <KeyFacts />
               </div>
             </div>
-            <div className="w-96 h-64 bg-white rounded-lg">
-              <p>TEMPLATE SHORTCUTS AREA</p>
+            <div
+              className="bg-white rounded-lg"
+              style={{ width: "30rem", height: "23rem" }}
+            >
+              <Shortcuts />
             </div>
           </div>
           {/* SIDENAV NAV BELOW*/}
-          {/* <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label> */}
         </div>
         <div className="drawer-side" style={{ height: "62rem" }}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
