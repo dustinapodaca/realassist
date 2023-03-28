@@ -130,7 +130,6 @@ export default function Index() {
                 <PropertyDetails />
               </div>
               <div className="h-96 bg-white rounded-lg">
-                {/* <p>TEMPLATE MINI TOPNAV CENTER AREA</p> */}
                 <KeyFacts />
               </div>
             </div>
