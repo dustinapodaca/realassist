@@ -1,7 +1,7 @@
 'use strict';
 
 import { useContext } from "react";
-import { PropertyContext } from "../../store/propertyContext.jsx";
+import { PropertyContext } from "../store/propertyContext.jsx";
 
 //COMPONENT imports
 import Carousel from "../components/carousel";

@@ -1,7 +1,7 @@
 'use strict';
 
 import { useContext } from "react";
-import { PropertyContext } from "../../store/propertyContext.jsx";
+import { PropertyContext } from "../../store/propertyContext";
 
 //MOCK JSON IMPORT
 // import data from "../../assets/data/data.json";
