@@ -1,6 +1,5 @@
 'use strict';
 
-// import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { PropertyContext } from "../../store/propertyContext.jsx";
 
@@ -15,27 +14,7 @@ import notes from "../../assets/img/saleComponent/note-favorite.svg";
 import phoneLogo from "../../assets/img/saleComponent/phoneLogo.svg";
 
 export default function SaleInfo () {
-  // const [data, setData] = useState(null);
-
   const { property } = useContext(PropertyContext);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       //hardcoded propertyId for now
-  //       const propertyId = 1;
-  //       const response = await fetch(`/api/property/${propertyId}`);
-  //       if (!response.ok) {
-  //         throw new Error("HTTP error " + response.status);
-  //       }
-  //       const data = await response.json();
-  //       setData(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
 
   if (!property) {
     return null;

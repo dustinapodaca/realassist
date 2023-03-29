@@ -1,6 +1,7 @@
 'use strict';
 
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { PropertyContext } from "../../store/propertyContext.jsx";
 
 //COMPONENT imports
 import Carousel from "../components/carousel";
@@ -28,33 +29,15 @@ import help from "../assets/img/sidenav/message-question.svg";
 
 import logo from "../assets/img/sidenav/cornerlogo.svg";
 
-//MOCK DATA import
+//MOCK PROPERTY import
 // import data from "../assets/data/data.json";
 
 import { motion } from "framer-motion";
 
 export default function Index() {
-  const [data, setData] = useState(null);
+  const { property } = useContext(PropertyContext);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        //hardcoded propertyId for now
-        const propertyId = 1;
-        const response = await fetch(`/api/property/${propertyId}`);
-        if (!response.ok) {
-          throw new Error("HTTP error " + response.status);
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (!data) {
+  if (!property) {
     return null;
   }
 
@@ -98,8 +81,8 @@ export default function Index() {
                   </motion.svg>
                 </motion.label>
                 <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
-                  <span className="mr-2 text-base-200">{data.address}.</span>{" "}
-                  {data.homeDetails.mls}
+                  <span className="mr-2 text-base-200">{property.address}.</span>{" "}
+                  {property.homeDetails.mls}
                 </a>
               </div>
               <div>

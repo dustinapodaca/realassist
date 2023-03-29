@@ -1,6 +1,5 @@
 'use strict';
 
-// import { useState, useEffect } from "react";
 import { useState, useContext } from "react";
 import { PropertyContext } from "../../store/propertyContext.jsx";
 
@@ -9,27 +8,7 @@ import { PropertyContext } from "../../store/propertyContext.jsx";
 
 export default function InfoTable() {
   const [isExpanded, setIsExpanded] = useState(false);
-  // const [data, setData] = useState(null);
-
   const { property } = useContext(PropertyContext);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       //hardcoded propertyId for now
-  //       const propertyId = 1;
-  //       const response = await fetch(`/api/property/${propertyId}`);
-  //       if (!response.ok) {
-  //         throw new Error("HTTP error " + response.status);
-  //       }
-  //       const data = await response.json();
-  //       setData(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
 
   if (!property) {
     return null;

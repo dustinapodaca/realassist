@@ -1,6 +1,5 @@
 'use strict';
 
-// import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { PropertyContext } from "../../store/propertyContext.jsx";
 
@@ -17,27 +16,6 @@ import area from "../../assets/img/propDetails/format-square.svg";
 
 export default function PropertyDetails () {
   const { property } = useContext(PropertyContext);
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       //hardcoded propertyId for now
-  //       const propertyId = 1;
-  //       const response = await fetch(
-  //         `/api/property/${propertyId}`
-  //       );
-  //       if (!response.ok) {
-  //         throw new Error("HTTP error " + response.status);
-  //       }
-  //       const data = await response.json();
-  //       setData(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
 
   if (!property) {
     return null;
