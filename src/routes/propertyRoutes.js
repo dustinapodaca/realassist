@@ -82,7 +82,10 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     let propertyId = parseInt(req.params.id);
-    const updatedProperty = await Property.findByIdAndUpdate(propertyId, req.body, { new: true });
+    const updatedProperty = await Property.findOneAndUpdate({
+      id: propertyId, 
+      ...req.body,
+    });
     if (!updatedProperty) {
       return res.status(404).send('Property not found');
     }
