@@ -97,11 +97,11 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     let propertyId = parseInt(req.params.id);
-    const deletedProperty = await Property.findByIdAndDelete(propertyId);
+    const deletedProperty = await Property.deleteOne({ id: propertyId });
     if (!deletedProperty) {
       return res.status(404).send('Property not found');
     }
-    res.status(204).json(deletedProperty);
+    res.status(204).send('Property successfully deleted');
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
