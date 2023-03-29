@@ -4,12 +4,12 @@ const compression = require("compression");
 const morgan = require("morgan");
 const { createRequestHandler } = require("@remix-run/express");
 
-//MongoDB
-// const mongoose = require("mongoose");
-// mongoose.connect(process.env.MONGODB_URI);
-
 //Routes
 const propertyRoutes = require("./src/routes/propertyRoutes.js");
+
+//MongoDB
+const mongoose = require("mongoose");
+mongoose.connect(process.env.MONGODB_URI);
 
 const BUILD_DIR = path.join(process.cwd(), "build");
 
@@ -17,6 +17,11 @@ const app = express();
 
 app.use(compression());
 app.use(express.json());
+
+//HOME ROUTE FOR TESTING
+// app.get("/", (req, res) => {
+//   res.status(200).send("We have a server!");
+// });
 
 //USE ROUTES
 app.use('/api/property', propertyRoutes);
@@ -52,10 +57,10 @@ app.all(
         mode: process.env.NODE_ENV,
       })
 );
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
-app.listen(port, () => {
-  console.log(`Express server listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Express server listening on port ${PORT}`);
 });
 
 function purgeRequireCache() {

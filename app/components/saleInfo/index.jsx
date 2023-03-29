@@ -1,6 +1,7 @@
 'use strict';
 
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { PropertyContext } from "../../store/propertyContext.jsx";
 
 //MOCK JSON import
 // import data from "../../assets/data/data.json";
@@ -13,30 +14,12 @@ import notes from "../../assets/img/saleComponent/note-favorite.svg";
 import phoneLogo from "../../assets/img/saleComponent/phoneLogo.svg";
 
 export default function SaleInfo () {
-  const [data, setData] = useState(null);
+  const { property } = useContext(PropertyContext);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        //hardcoded propertyId for now
-        const propertyId = 1;
-        const response = await fetch(`/api/property/${propertyId}`);
-        if (!response.ok) {
-          throw new Error("HTTP error " + response.status);
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (!data) {
+  if (!property) {
     return null;
   }
-  
+
   return (
     <>
       <div className="flex flex-row">
@@ -48,18 +31,18 @@ export default function SaleInfo () {
         </button>
       </div>
       <div className="px-5 mt-3">
-        <p className="text-neutral font-medium mb-1">MLS#: {data.homeDetails.mls}</p>
+        <p className="text-neutral font-medium mb-1">MLS#: {property.homeDetails.mls}</p>
         <p className="mb-1 text-base-200">
           Listed for:{" "}
           <span className="text-primary font-medium">
-            ${data.price.toLocaleString("en-US")}
+            ${property.price.toLocaleString("en-US")}
           </span>
         </p>
         <p className="text-neutral">
-          {data.address} {data.city},
+          {property.address} {property.city},
         </p>
         <p className="mb-3 text-neutral">
-          {data.state} {data.zipCode}
+          {property.state} {property.zipCode}
         </p>
       </div>
       <div className="flex flex-col px-4">

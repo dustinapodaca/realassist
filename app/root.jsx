@@ -1,3 +1,4 @@
+//REMIX imports
 import {
   Links,
   LiveReload,
@@ -7,7 +8,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+//TAILWIND import
 import stylesheet from "~/tailwind.css";
+
+//CONTEXT import
+import { PropertyProvider } from "~/store/propertyContext";
 
 export const links = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -27,7 +32,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <PropertyProvider>
+          <Outlet />
+        </PropertyProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
