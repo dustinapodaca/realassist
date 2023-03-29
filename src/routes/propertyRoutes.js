@@ -52,7 +52,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     let propertyId = parseInt(req.params.id);
-    const property = await Property.findById(propertyId);
+    const property = await Property.findOne({ id: propertyId });
     if (!property) {
       return res.status(404).send('Property not found');
     }

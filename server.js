@@ -19,9 +19,9 @@ app.use(compression());
 app.use(express.json());
 
 //HOME ROUTE FOR TESTING
-app.get("/", (req, res) => {
-  res.status(200).send("We have a server!");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("We have a server!");
+// });
 
 //USE ROUTES
 app.use('/api/property', propertyRoutes);

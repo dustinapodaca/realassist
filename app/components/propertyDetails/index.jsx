@@ -1,6 +1,8 @@
 'use strict';
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { PropertyContext } from "../../store/propertyContext.jsx";
 
 //MOCK JSON IMPORT
 // import data from "../../assets/data/data.json";
@@ -14,29 +16,30 @@ import sqft from "../../assets/img/propDetails/home-2.svg";
 import area from "../../assets/img/propDetails/format-square.svg";
 
 export default function PropertyDetails () {
-  const [data, setData] = useState(null);
+  const { property } = useContext(PropertyContext);
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        //hardcoded propertyId for now
-        const propertyId = 1;
-        const response = await fetch(
-          `/api/property/${propertyId}`
-        );
-        if (!response.ok) {
-          throw new Error("HTTP error " + response.status);
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       //hardcoded propertyId for now
+  //       const propertyId = 1;
+  //       const response = await fetch(
+  //         `/api/property/${propertyId}`
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("HTTP error " + response.status);
+  //       }
+  //       const data = await response.json();
+  //       setData(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
-  if (!data) {
+  if (!property) {
     return null;
   }
 
@@ -52,11 +55,11 @@ export default function PropertyDetails () {
             alt="houseType"
             className="w-6 h-6 m-auto mb-1"
           />
-          <p className="text-base-200 text-sm">{data.homeDetails.homeType}</p>
+          <p className="text-base-200 text-sm">{property.homeDetails.homeType}</p>
         </span>
         <span className="mx-4">
           <img src={bedrooms} alt="bedrooms" className="w-6 h-6 m-auto mb-1" />
-          <p className="text-base-200 text-sm">{data.homeDetails.bedrooms} Bedrooms</p>
+          <p className="text-base-200 text-sm">{property.homeDetails.bedrooms} Bedrooms</p>
         </span>
         <span className="mx-4">
           <img
@@ -64,22 +67,22 @@ export default function PropertyDetails () {
             alt="bathrooms"
             className="w-6 h-6 m-auto mb-1"
           />
-          <p className="text-base-200 text-sm">{data.homeDetails.bathrooms} Bathrooms</p>
+          <p className="text-base-200 text-sm">{property.homeDetails.bathrooms} Bathrooms</p>
         </span>
         <span className="mx-4">
           <img src={garage} alt="garage" className="w-6 h-6 m-auto mb-1" />
-          <p className="text-base-200 text-sm">{data.homeDetails.garage} Garage</p>
+          <p className="text-base-200 text-sm">{property.homeDetails.garage} Garage</p>
         </span>
         <span className="mx-4">
           <img src={sqft} alt="sqft" className="w-6 h-6 m-auto mb-1" />
           <p className="text-base-200 text-sm">
-            {data.homeDetails.sqft.toLocaleString("en-US")} sq.ft.
+            {property.homeDetails.sqft.toLocaleString("en-US")} sq.ft.
           </p>
         </span>
         <span className="mx-4">
           <img src={area} alt="area" className="w-6 h-6 m-auto mb-1" />
           <p className="text-base-200 text-sm">
-            {data.homeDetails.area.toLocaleString("en-US")} sq.ft.
+            {property.homeDetails.area.toLocaleString("en-US")} sq.ft.
           </p>
         </span>
       </div>
