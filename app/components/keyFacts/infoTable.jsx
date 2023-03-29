@@ -1,37 +1,41 @@
 'use strict';
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+import { PropertyContext } from "../../store/propertyContext.jsx";
 
-//MOCK DATA import
+//MOCK PROPERTY import
 // import data from "../../assets/data/data.json";
 
 export default function InfoTable() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        //hardcoded propertyId for now
-        const propertyId = 1;
-        const response = await fetch(`/api/property/${propertyId}`);
-        if (!response.ok) {
-          throw new Error("HTTP error " + response.status);
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
+  const { property } = useContext(PropertyContext);
 
-  if (!data) {
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       //hardcoded propertyId for now
+  //       const propertyId = 1;
+  //       const response = await fetch(`/api/property/${propertyId}`);
+  //       if (!response.ok) {
+  //         throw new Error("HTTP error " + response.status);
+  //       }
+  //       const data = await response.json();
+  //       setData(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+
+  if (!property) {
     return null;
   }
   
-  let description = data.listingDetails.description;
+  let description = property.listingDetails.description;
   const maxWords = 25;
 
   const words = description.split(" ");
@@ -58,57 +62,57 @@ export default function InfoTable() {
           <tr className="w-full">
             <td className="text-base-200 font-medium -pl-4">Tax</td>
             <td className="text-neutral text-right font-medium">
-              ${data.homeDetails.tax.toLocaleString("en-US")} /{" "}
-              {data.homeDetails.year}
+              ${property.homeDetails.tax.toLocaleString("en-US")} /{" "}
+              {property.homeDetails.year}
             </td>
           </tr>
           {/* row 2 */}
           <tr>
             <td className="text-base-200 font-medium">Type</td>
             <td className="text-neutral text-right font-medium">
-              {data.listingDetails.type}
+              {property.listingDetails.type}
             </td>
           </tr>
           {/* row 3 */}
           <tr>
             <td className="text-base-200 font-medium">Building Age</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.buildingAge}
+              {property.homeDetails.buildingAge}
             </td>
           </tr>
           {/* row 4 */}
           <tr>
             <td className="text-base-200 font-medium">Size</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.size} sq.ft.
+              {property.homeDetails.size} sq.ft.
             </td>
           </tr>
           {/* row 5 */}
           <tr>
             <td className="text-base-200 font-medium">Parking</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.parking}
+              {property.homeDetails.parking}
             </td>
           </tr>
           {/* row 6 */}
           <tr>
             <td className="text-base-200 font-medium">Basement</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.basement}
+              {property.homeDetails.basement}
             </td>
           </tr>
           {/* row 7 */}
           <tr>
             <td className="text-base-200 font-medium">MLS#</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.mls}
+              {property.homeDetails.mls}
             </td>
           </tr>
           {/* row 8 */}
           <tr>
             <td className="text-base-200 font-medium">Possession</td>
             <td className="text-neutral text-right font-medium">
-              {data.homeDetails.possession}
+              {property.homeDetails.possession}
             </td>
           </tr>
           {/* row 9 */}
