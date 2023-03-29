@@ -1,34 +1,6 @@
-const mongoose = require('mongoose');
+'use strict';
 
-// //MOCK JSON
-// {
-//   "id": 1,
-//   "address": "2218 Thornridge Cir.",
-//   "city": "Syracuse",
-//   "state": "Connecticut",
-//   "zipCode": 35624,
-//   "price": 1549586,
-//   "homeDetails": {
-//     "homeType": "Apartment",
-//     "bedrooms": 3,
-//     "bathrooms": 2,
-//     "garage": 2,
-//     "sqft": 1963,
-//     "area": 1176,
-//     "tax": 1340,
-//     "year": 2022,
-//     "buildingAge": "5 Year",
-//     "size": "1,500 - 2,000",
-//     "parking": "Detached 2 Garage, 6 Parking",
-//     "basement": "Unfinished",
-//     "mls": "E5579076",
-//     "possession": "5 day"
-//   },
-//   "listingDetails": {
-//     "type": "Single-Family",
-//     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo risus a mattis semper. Integer placerat volutpat odio, at pulvinar tortor laoreet mattis. Proin aliquet semper tempus. Etiam auctor lacus leo , sit amet lacinia nisl tincidunt eget."
-//   }
-// }
+const mongoose = require('mongoose');
 
 //HOME DETAILS SCHEMA
 const homeDetailsSchema = new mongoose.Schema({
