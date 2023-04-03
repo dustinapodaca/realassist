@@ -13,15 +13,12 @@ export default function KeyFacts() {
   };
 
   return (
-    <div
-      className="rounded-lg pb-12"
-      // style={{ height: "40rem" }}
-    >
-      <div className="tabs w-full">
+    <div className="rounded-lg pb-12">
+      <div className="tabs w-full bg-white rounded-lg">
         <span
           className={`tab tab-bordered font-medium ${
             activeTab === 0 ? "tab-active text-neutral" : ""
-          } w-1/3 h-16 ease-in-out duration-500 transition-all text-lg`}
+          } w-full sm:w-1/3 h-16 ease-in-out duration-500 transition-all text-lg sm:text-base`}
           onClick={() => handleClick(0)}
         >
           Key Facts
@@ -29,7 +26,7 @@ export default function KeyFacts() {
         <span
           className={`tab tab-bordered font-medium ${
             activeTab === 1 ? "tab-active text-neutral" : ""
-          } w-1/3 h-16 ease-in-out duration-500 transition-all text-lg`}
+          } w-full sm:w-1/3 h-16 ease-in-out duration-500 transition-all text-lg sm:text-base`}
           onClick={() => handleClick(1)}
         >
           Details
@@ -37,7 +34,7 @@ export default function KeyFacts() {
         <span
           className={`tab tab-bordered font-medium ${
             activeTab === 2 ? "tab-active text-neutral" : ""
-          } w-1/3 h-16 ease-in-out duration-500 transition-all text-lg`}
+          } w-full sm:w-1/3 h-16 ease-in-out duration-500 transition-all text-lg sm:text-base`}
           onClick={() => handleClick(2)}
         >
           Rooms

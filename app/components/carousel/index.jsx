@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import houseimg1 from '../../assets/img/houseimg1.jpg';
@@ -22,6 +22,31 @@ const images = [
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 1410) {
+      setIsMobile(true);
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1410) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        if (window.innerWidth < 1410) {
+          setIsMobile(true);
+        } else {
+          setIsMobile(false);
+        }
+      });
+    };
+  }, []);
 
   const handleClickLeft = () => {
     setCurrentIndex((prevIndex) =>
@@ -64,6 +89,21 @@ const Carousel = () => {
         </button>
       </div>
       <div className="overflow-hidden relative">
+      {isMobile ? (
+        <div
+          className="flex transition-all duration-500 ease-in-out h-72"
+          style={{ transform: `translateX(-${currentIndex * 50}%)` }}
+        >
+          {images.map((image) => (
+            <img
+              key={image.id}
+              src={image.src}
+              alt={image.id}
+              className="w-1/2 object-cover flex-none p-2 rounded-2xl"
+            />
+          ))}
+        </div>
+      ) : (
         <div
           className="flex transition-all duration-500 ease-in-out h-72"
           style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
@@ -75,8 +115,9 @@ const Carousel = () => {
               alt={image.id}
               className="w-1/3 object-cover flex-none p-2 rounded-2xl"
             />
-          ))}
+        ))}
         </div>
+      )}
       </div>
       <div className="absolute top-1/2 -mt-6 right-0 z-10">
         <button

@@ -1,6 +1,6 @@
 'use strict';
 
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { PropertyContext } from "../store/propertyContext.jsx";
 
 //COMPONENT imports
@@ -35,7 +35,33 @@ import logo from "../assets/img/sidenav/cornerlogo.svg";
 import { motion } from "framer-motion";
 
 export default function Index() {
+  const [isMobile, setIsMobile] = useState(false);
   const { property } = useContext(PropertyContext);
+
+  useEffect(() => {
+    if (window.innerWidth < 1549) {
+      setIsMobile(true);
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1549) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        if (window.innerWidth < 1549) {
+          setIsMobile(true);
+        } else {
+          setIsMobile(false);
+        }
+      });
+    };
+
+  }, []);
 
   if (!property) {
     return null;
@@ -44,7 +70,7 @@ export default function Index() {
   return (
     <>
       <div
-        style={{maxWidth: "120rem", overflowX: "hidden"}}
+        style={{ maxWidth: "120rem", overflowX: "hidden" }}
         className="drawer drawer-mobile bg-base-300 m-auto"
       >
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -84,7 +110,9 @@ export default function Index() {
                   </motion.svg>
                 </motion.label>
                 <a className="btn btn-ghost font-normal normal-case text-lg tracking-tight text-neutral">
-                  <span className="mr-2 text-base-200">{property.address}.</span>{" "}
+                  <span className="mr-2 text-base-200">
+                    {property.address}.
+                  </span>{" "}
                   {property.homeDetails.mls}
                 </a>
               </div>
@@ -147,29 +175,50 @@ export default function Index() {
           </div>
           {/* TOP NAV ABOVE*/}
           <Carousel />
-          <div className="w-full flex flex-row justify-evenly mt-6 pl-2">
-            <div
-              className="bg-white rounded-lg"
-              style={{ width: "26rem", height: "33rem" }}
-            >
-              {/* <p>TEMPLATE FOR SALE DETAIL AREA</p> */}
-              <SaleInfo />
-            </div>
-            <div className="w-full mx-6">
-              <div className="bg-white rounded-lg mb-4 h-20">
-                <PropertyDetails />
+          <div className="pl-2 grid grid-rows-3 grid-flow-col gap-4 auto-cols-auto">
+            <div className="row-span-3 flex flex-col rounded-lg">
+              <div className="bg-white rounded-lg" style={{ height: "33rem" }}>
+                <SaleInfo />
               </div>
-              <div className="h-96 bg-white rounded-lg">
-                <KeyFacts />
+              <>
+                {isMobile ? (
+                  <div
+                    className="row-span-3 bg-white rounded-lg mt-4"
+                    style={{ width: "18rem", height: "23rem" }}
+                  >
+                    <Shortcuts />
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </>
+            </div>
+            <div className="rounded-lg">
+              <div className="">
+                <div>
+                  <div className="col-span-2 bg-base-300 rounded-lg pb-2">
+                    <PropertyDetails />
+                  </div>
+                  <div className="row-span-2 col-span-2 bg-base-300 rounded-lg pt-1">
+                    <KeyFacts />
+                  </div>
+                </div>
               </div>
             </div>
-            <div
-              className="bg-white rounded-lg"
-              style={{ width: "30rem", height: "23rem" }}
-            >
-              <Shortcuts />
-            </div>
+
+            {isMobile ? (
+              <></>
+            ) : (
+              <div
+                className="row-span-3 rounded-lg bg-white"
+                style={{ width: "18rem", height: "23rem" }}
+              >
+                <Shortcuts />
+              </div>
+            )}
+
           </div>
+
           {/* SIDENAV NAV BELOW*/}
         </div>
         <div className="drawer-side" style={{ height: "62rem" }}>

@@ -27,10 +27,10 @@ export default function InfoTable() {
 
   return (
     <div
-      className="overflow-x-auto p-4 bg-white rounded-xl"
+      className="overflow-x-auto p-4 bg-white rounded-b-lg border-b-8 border-white"
       style={{ height: "42rem" }}
     >
-      <p className="text-md text-base-200 leading-8 mb-1 px-2">
+      <p className="text-md text-base-200 leading-7 mb-1 px-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo
         risus a mattis semper. Integer placerat volutpat odio, at pulvinar
         tortor laoreet mattis. Proin aliquet semper tempus.
