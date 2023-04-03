@@ -7,10 +7,14 @@ export const PropertyProvider = ({ children }) => {
 
   useEffect(() => {
     async function getPropertyData() {
-      let propertyId = 1; //hardcoded propertyId for now
-      const res = await fetch(`/api/property/${propertyId}`);
-      const data = await res.json();
-      setProperty(data);
+      try {
+        let propertyId = 1; //hardcoded propertyId for now
+        const res = await fetch(`/api/property/${propertyId}`);
+        const data = await res.json();
+        setProperty(data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getPropertyData();
   }, []);
